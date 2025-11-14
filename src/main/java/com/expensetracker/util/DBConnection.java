@@ -3,27 +3,28 @@ package com.expensetracker.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 public class DBConnection {
-    private static Connection conn;
 
-    // Update these credentials for your MySQL server
     private static final String URL = "jdbc:mysql://localhost:3306/expense_tracker";
-    private static final String USER = "root";
-    private static final String PASS = "12345678";
+    private static final String USER = "root"; // change if needed
+    private static final String PASSWORD = "12345678"; // add your password if you have one
+
+    private static Connection connection;
 
     public static Connection getConnection() {
-        if (conn == null) {
+        if (connection == null) {
             try {
-                conn = DriverManager.getConnection(URL, USER, PASS);
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Database connection failed: " + e.getMessage(),
-                        "DB Error", JOptionPane.ERROR_MESSAGE);
-                System.exit(1);
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                System.out.println("Connected to MySQL successfully!");
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
             }
         }
-        return conn;
+        return connection;
     }
 }
+
+
 
