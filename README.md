@@ -1,6 +1,6 @@
 # Desktop Expense Tracker
 
-**Team Name**: JavAreana  
+**Team Name**: JavArena  
 **Members**:  
 - Vishnu Jha (24SCSE1410102)  
 - Aatush (24SCSE1410104)  
